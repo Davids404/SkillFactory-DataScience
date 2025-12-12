@@ -13,7 +13,6 @@ async-lru==2.0.5
 attrs==23.2.0
 Babel==2.10.3
 bcc==0.1.10
-Brlapi==none
 bcrypt==3.2.2
 beautifulsoup4==4.13.3
 bleach==6.3.0
