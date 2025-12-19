@@ -15,7 +15,7 @@ import plotly.express as px
 # Реализуем функции необходимые для работы приложения
 
 
-@st.cache
+@st.cache_data
 def read_files(csv_file_1="ratings.csv", csv_file_2="books.csv"):
     """
     Функция для чтения файлов.
