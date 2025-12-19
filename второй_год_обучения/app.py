@@ -16,13 +16,13 @@ import plotly.express as px
 
 
 @st.cache_data
-def read_files(csv_file_1="ratings.csv", csv_file_2="books.csv"):
+def read_files(folder_name='data'):
     """
     Функция для чтения файлов.
     Возвращает два DataFrame с рейтингами и характеристиками книг.
     """
-    ratings = pd.read_csv(csv_file_1)
-    books = pd.read_csv(csv_file_2)
+    ratings = pd.read_csv(folder_name + '/ratings.csv')
+    books = pd.read_csv(folder_name + '/books.csv')
     return ratings, books
 
 
@@ -87,7 +87,7 @@ def get_recomendation_df(ids, distances, name_mapper, author_mapper):
 
 
 # Загружаем данные
-ratings, books = read_files()
+ratings, books = read_files(folder_name='data')
 # Создаем словари для сопоставления id книг и их названий/авторов
 name_mapper, author_mapper = make_mappers(books)
 # Загружаем эмбеддинги и создаем индекс для поиска
