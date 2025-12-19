@@ -39,16 +39,16 @@ def make_mappers(books):
     return name_mapper, author_mapper
 
 
-def load_embeddings(file_name="item_embeddings.pkl"):
+def load_embeddings(file_name='data/item_embeddings.pkl'):
     """
     Функция для загрузки векторных представлений.
     Возвращает прочитанные эмбеддинги книг и индекс (граф) для поиска похожих книг.
     """
-    with open(file_name, "rb") as f:
+    with open(file_name, 'rb') as f:
         item_embeddings = pickle.load(f)
 
-    # Тут мы используем nmslib, чтобы создать наш быстрый knn
-    nms_idx = nmslib.init(method="hnsw", space="cosinesimil")
+    # Тут мы используем nmslib, чтобы создать быстрый knn
+    nms_idx = nmslib.init(method='hnsw', space='cosinesimil')
     nms_idx.addDataPointBatch(item_embeddings)
     nms_idx.createIndex(print_progress=True)
     return item_embeddings, nms_idx
